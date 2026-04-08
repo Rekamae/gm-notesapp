@@ -16,14 +16,14 @@ A note taking app for Game Masters while they play Dungeons and Dragons. It allo
 **Prerequisites:** Node.js 18+
 
 ```bash
-# 1. Clone the repository
+1. Clone the repository
 git clone <repo-url>
 cd gm-notesapp
 
-# 2. Install dependencies
+2. Install dependencies
 npm install
 
-# 3. Start the development server
+3. Start the development server
 npm run dev
 ```
 

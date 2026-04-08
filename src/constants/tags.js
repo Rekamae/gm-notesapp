@@ -1,4 +1,4 @@
-// tag definitions with display labels and CSS class names.
+// tag display labels and CSS class names.
 export const TAGS = [
   { value: "combat", label: "Combat", colorClass: "tag--combat" },
   { value: "location", label: "Location", colorClass: "tag--location" },

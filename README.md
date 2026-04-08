@@ -1,16 +1,35 @@
-# React + Vite
+# GM Notes App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A note taking app for Game Masters while they play Dungeons and Dragons. It allows them to create notes, filter using tags and search for specific notes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Create, edit, and delete notes
+- Tag notes and filter by tag
+- Search notes by content or tag
+- Sort by newest or oldest
+- Can create multiple campaigns
+- Notes persist in the browser via local Storage
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Prerequisites:** Node.js 18+
 
-## Expanding the ESLint configuration
+```bash
+# 1. Clone the repository
+git clone <repo-url>
+cd gm-notesapp
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
+```
+
+Then open in your browser: http://localhost:5173/
+
+## Tech Stack
+
+- React - UI components
+- Vite - build tool and dev server

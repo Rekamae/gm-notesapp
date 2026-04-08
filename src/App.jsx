@@ -1,45 +1,41 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import initialNotes from "./data/initialNotes.json";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import NewEntryModal from "./components/NewEntryModal";
 import NoteList from "./components/NoteList";
 import { SearchIcon, CloseIcon, PlusCircleIcon } from "./components/Icons";
+import BackgroundPattern from "./components/BackgroundPattern";
 
 const INITIAL_CAMPAIGN = { id: "c1", name: "Raid dungeon" };
 
-// Load all state from localStorage together so campaigns and notes
-// are always in sync. If either is missing, start fresh with defaults.
-const savedCampaigns = localStorage.getItem("gm_campaigns");
-const savedNotes = localStorage.getItem("gm_notes_v2");
-const LOADED = (savedCampaigns && savedNotes)
-  ? { campaigns: JSON.parse(savedCampaigns), notes: JSON.parse(savedNotes) }
-  : { campaigns: [INITIAL_CAMPAIGN], notes: initialNotes };
-
 function App() {
-  const [campaigns, setCampaigns] = useState(LOADED.campaigns);
-  const [activeCampaignId, setActiveCampaignId] = useState(LOADED.campaigns[0]?.id || null);
-  const [notes, setNotes] = useState(LOADED.notes);
+  const savedCampaigns = localStorage.getItem("gm_campaigns");
+  const savedNotes = localStorage.getItem("gm_notes_v2");
+
+  const [campaigns, setCampaigns] = useState(savedCampaigns ? JSON.parse(savedCampaigns) : [INITIAL_CAMPAIGN]);
+  const [activeCampaignId, setActiveCampaignId] = useState(
+    savedCampaigns ? JSON.parse(savedCampaigns)[0]?.id : INITIAL_CAMPAIGN.id
+  );
+  const [notes, setNotes] = useState(savedNotes ? JSON.parse(savedNotes) : initialNotes);
 
   const [search, setSearch] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
   const [activeTag, setActiveTag] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
   const [sidebarWidth, setSidebarWidth] = useState(260);
   const [isDragging, setIsDragging] = useState(false);
-  const sidebarWidthRef = useRef(260);
 
   function handleResizeStart(e) {
     e.preventDefault();
     const startX = e.clientX;
-    const startWidth = sidebarWidthRef.current;
+    const startWidth = sidebarWidth;
     setIsDragging(true);
 
     function onMouseMove(e) {
       const newWidth = Math.min(500, Math.max(160, startWidth + e.clientX - startX));
-      sidebarWidthRef.current = newWidth;
       setSidebarWidth(newWidth);
     }
 
@@ -52,6 +48,14 @@ function App() {
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
   }
+
+  useEffect(function () {
+    function handleResize() {
+      if (window.innerWidth <= 768) setSidebarOpen(false);
+    }
+    window.addEventListener("resize", handleResize);
+    return function () { window.removeEventListener("resize", handleResize); };
+  }, []);
 
   useEffect(function () {
     localStorage.setItem("gm_campaigns", JSON.stringify(campaigns));
@@ -174,6 +178,7 @@ function App() {
         />
 
         <main className="main-content">
+          <BackgroundPattern />
           <div className="search-bar-wrapper">
             <div className="search-bar">
               <span className="search-icon" aria-hidden="true"><SearchIcon /></span>

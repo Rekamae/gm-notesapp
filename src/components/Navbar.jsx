@@ -11,7 +11,7 @@ function Navbar({ onToggleSidebar, sidebarOpen }) {
         <span className="hamburger-line" />
         <span className="hamburger-line" />
       </button>
-      <span className="navbar-title">Game Master Notes</span>
+      <span className="navbar-title">Game Master's Notes</span>
       <div className="navbar-spacer" />
     </nav>
   );

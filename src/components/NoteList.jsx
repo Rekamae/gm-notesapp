@@ -11,9 +11,6 @@ function NoteList({
   if (notes.length === 0) {
     return (
       <div className="empty-state" role="status" aria-live="polite">
-        <span className="empty-icon" aria-hidden="true">
-          📜
-        </span>
         <p className="empty-title">No entries found</p>
       </div>
     );

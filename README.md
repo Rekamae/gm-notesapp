@@ -27,8 +27,6 @@ npm install
 npm run dev
 ```
 
-Then open in your browser: http://localhost:5173/
-
 ## Tech Stack
 
 - React - UI components

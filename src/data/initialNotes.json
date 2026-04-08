@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "campaignId": "c1",
+    "text": "A party member was wonded and they are currently cursed.",
+    "tags": ["combat", "curse"],
+    "createdAt": "2024-01-10T10:00:00.000Z",
+    "updatedAt": "2024-01-10T10:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "campaignId": "c1",
+    "text": "The team is currently in a tavern trying to get some rest and tomorrow they will look for a new quest.",
+    "tags": ["location", "quest"],
+    "createdAt": "2024-01-10T10:15:00.000Z",
+    "updatedAt": "2024-01-10T10:15:00.000Z"
+  },
+  {
+    "id": "3",
+    "campaignId": "c1",
+    "text": "A party member has a new buff that increases their luck",
+    "tags": ["blessing", "combat"],
+    "createdAt": "2024-01-10T10:30:00.000Z",
+    "updatedAt": "2024-01-10T10:30:00.000Z"
+  }
+]
